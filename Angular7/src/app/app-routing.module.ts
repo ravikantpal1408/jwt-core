@@ -1,3 +1,4 @@
+import { CustomerComponent } from './customer/customer.component';
 import { AuthGuard } from './auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -7,15 +8,19 @@ import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'/user/login',pathMatch:'full'},
+  { path: '', redirectTo: '/user/login', pathMatch: 'full' },
   {
     path: 'user', component: UserComponent,
     children: [
-      { path: 'registration', component: RegistrationComponent },
+      { path: 'registration', component: RegistrationComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent }
     ]
   },
-  {path:'home',component:HomeComponent,canActivate:[AuthGuard]}
+  { path: 'home', component: HomeComponent, children: [
+      { path: 'customer', component: CustomerComponent, canActivate: [AuthGuard]}
+  ]},
+  // { path: 'customer', component: CustomerComponent, canActivate: [AuthGuard] }
+
 ];
 
 @NgModule({

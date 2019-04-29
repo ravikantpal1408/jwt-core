@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular7';
+  title = 'CRM - Welcome';
+  constructor(private spinner: NgxSpinnerService) {
+
+  }
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnInit() {
+    /** spinner starts on init */
+    this.spinner.show();
+
+    setTimeout(() => {
+        /** spinner ends after 5 seconds */
+        this.spinner.hide();
+    }, 5000);
+  }
 }

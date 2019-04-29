@@ -1,0 +1,137 @@
+<h1 class="h3 mb-4 text-gray-800">Register New Customer</h1>
+<hr>
+
+
+<!--
+<div class="row" style="height:10px"></div>
+<form [formGroup]="customerService.formModel" autocomplete="off" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-md-6">
+
+      <div class="form-group required">
+        <label>Username</label>
+        <input class="form-control" formControlName="UserName">
+        <label class="text-danger"
+          *ngIf="customerService.formModel.get('UserName').touched && customerService.formModel.get('UserName').errors?.required">This
+          field is mandatory.</label>
+      </div>
+      <div class="form-group required">
+        <label>Email</label>
+        <input class="form-control" formControlName="Email">
+        <label class="text-danger"
+          *ngIf="customerService.formModel.get('Email').touched && customerService.formModel.get('Email').errors?.email">Invalid
+          email address.</label>
+      </div>
+      <div class="form-group required">
+        <label>Full Name</label>
+        <input class="form-control" formControlName="FullName">
+      </div>
+      <div formGroupName="Contacts">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group required">
+              <label>Home Phone</label>
+              <input type="text" class="form-control" formControlName="HomePhoneNumber" maxlength="10"
+                placeholder="+(91) 123 9876">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group required">
+              <label>Mobile</label>
+              <input type="number" class="form-control" formControlName="MobileNumber" placeholder="988919889">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div formGroupName="Address">
+        <div class="form-group required">
+          <label>Home Address</label>
+          <input type="text" class="form-control" formControlName="HomeAddress">
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group required">
+              <label>City</label>
+              <input type="text" class="form-control" formControlName="CityName">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group required">
+              <label>State</label>
+              <input type="text" class="form-control" formControlName="StateName">
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group required">
+              <label>Pincode </label>
+              <input type="text" class="form-control" formControlName="CityName">
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div formGroupName="CustomerType">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group required">
+              <label>Customer Type</label>
+
+              <select class="form-control" formControlName="TypeList">
+                <option>--Select Customer type---</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group required">
+                  <label>Is Subscribe ?</label>
+                  <input type="checkbox" class="form-control" formControlName="IsSubscribe">
+                </div>
+              </div>
+              <!-- <div class="col-sm-6">
+                <div class="form-group">
+
+                </div>
+              </div> -->
+           <!-- </div>
+
+
+        </div>
+
+      </div>
+
+    </div>-->
+    <!--<div formGroupName="Passwords">
+             <div class="form-group required">
+              <label>Password</label>
+              <input type="password" class="form-control" formControlName="Password">
+              <label class="text-danger" *ngIf="customerService.formModel.get('Passwords.Password').touched && customerService.formModel.get('Passwords.Password').errors?.required">This
+                field is mandatory.</label>
+              <label class="text-danger" *ngIf="customerService.formModel.get('Passwords.Password').touched && customerService.formModel.get('Passwords.Password').errors?.minlength">Minimum
+                4 characters required.</label>
+            </div> -->
+    <!-- <div class="form-group required">
+              <label>Confirm Password</label>
+              <input type="password" class="form-control" formControlName="ConfirmPassword">
+              <label class="text-danger" *ngIf="customerService.formModel.get('Passwords.ConfirmPassword').touched && customerService.formModel.get('Passwords.ConfirmPassword').errors?.required">This
+                field is mandatory.</label>
+              <label class="text-danger" *ngIf="customerService.formModel.get('Passwords.ConfirmPassword').touched && customerService.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Confirm
+                Password does not match.</label>
+            </div>
+          </div> -->
+    <!-- <div class="form-row">
+            <div class="form-group col-md-8 offset-md-2">
+              <button type="submit" class="btn btn-lg btn-block" [disabled]="!customerService.formModel.valid">Sign Up</button>
+            </div>
+          </div>
+
+  </div>
+
+
+  </div>
+</form>
+-->

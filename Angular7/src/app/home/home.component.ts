@@ -1,6 +1,8 @@
-import { UserService } from './../shared/user.service';
+import { UserService } from '../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   userDetails;
 
-  constructor(private router: Router, private service: UserService) { }
+  constructor(private service: UserService, private router: Router) { }
 
   ngOnInit() {
     this.service.getUserProfile().subscribe(
@@ -22,10 +24,11 @@ export class HomeComponent implements OnInit {
       },
     );
   }
-
-
   onLogout() {
     localStorage.removeItem('token');
     this.router.navigate(['/user/login']);
   }
+
+
+
 }
