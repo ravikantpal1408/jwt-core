@@ -1,4 +1,6 @@
-import { CustomerComponent } from './customer/customer.component';
+import { AllCustomerComponent } from './customer/all/allcustomer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CustomerComponent } from './customer/new/customer.component';
 import { AuthGuard } from './auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,9 +19,12 @@ const routes: Routes = [
     ]
   },
   { path: 'home', component: HomeComponent, children: [
-      { path: 'customer', component: CustomerComponent, canActivate: [AuthGuard]}
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'customer', component: CustomerComponent, canActivate: [AuthGuard] },
+    { path: 'allcustomer', component: AllCustomerComponent, canActivate: [AuthGuard]}
+
   ]},
-  // { path: 'customer', component: CustomerComponent, canActivate: [AuthGuard] }
+
 
 ];
 

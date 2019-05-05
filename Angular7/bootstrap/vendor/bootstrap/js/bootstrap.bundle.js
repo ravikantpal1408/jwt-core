@@ -117,7 +117,7 @@
   }
 
   function setTransitionEndSupport() {
-    $.fn.emulateTransitionEnd = transitionEndEmulator;
+   (function($){ $.fn.emulateTransitionEnd = transitionEndEmulator }(jQuery)) ;
     $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
   }
   /**

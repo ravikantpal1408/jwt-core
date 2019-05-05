@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   formModel = {
     UserName: '',
     Password: ''
-  }
+  };
+
   constructor(private service: UserService,
     private router: Router,
     private toastr: ToastrService,
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
       (res: any) => {
         this.spinner.hide();
         localStorage.setItem('token', res.token);
+
         this.router.navigateByUrl('/home');
       },
       err => {

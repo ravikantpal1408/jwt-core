@@ -1,3 +1,5 @@
+import { AllCustomerComponent } from './customer/all/allcustomer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { ChartService } from './services/chart.service';
 import { CustomerService } from './services/customer.service';
@@ -29,7 +31,7 @@ import {
 } from '@angular/material';
 
 import { LayoutModule } from '@angular/cdk/layout';
-import { CustomerComponent } from './customer/customer.component';
+import { CustomerComponent } from './customer/new/customer.component';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TopnavComponent } from './partials/topnav/topnav.component';
@@ -47,7 +49,9 @@ import { TopnavComponent } from './partials/topnav/topnav.component';
     ProfileComponent,
     NavbarComponent,
     CustomerComponent,
-    TopnavComponent
+    TopnavComponent,
+    DashboardComponent,
+    AllCustomerComponent
 
 
   ],
