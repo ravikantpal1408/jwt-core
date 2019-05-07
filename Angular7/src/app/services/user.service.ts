@@ -63,6 +63,6 @@ export class UserService {
 
 
   getUserByEmail(username: string){
-    return this.http.get<any[]>(this.BaseURI + '/ApplicationUser/GetUserByEmail?loginId='+ username);
+    return this.http.get(this.BaseURI + '/ApplicationUser/GetUserByEmail?loginId='+ username);
   }
 }

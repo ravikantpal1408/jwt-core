@@ -35,7 +35,7 @@ import { CustomerComponent } from './customer/new/customer.component';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TopnavComponent } from './partials/topnav/topnav.component';
-import { UniqueEmailValidatorDirective } from './shared/unique-email-validator.directive';
+
 
 
 
@@ -53,7 +53,7 @@ import { UniqueEmailValidatorDirective } from './shared/unique-email-validator.d
     TopnavComponent,
     DashboardComponent,
     AllCustomerComponent,
-    UniqueEmailValidatorDirective
+
 
 
   ],

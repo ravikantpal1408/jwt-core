@@ -84,7 +84,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetUserByEmail(string loginId){
             var user = await _userManager.FindByNameAsync(loginId);
             if(user == null){
-                return Ok(new {});
+                return Ok( new { message="Not Found"} );
             }
             else{
                 return Ok(new { user.UserName});

@@ -10,6 +10,8 @@ import { FormControl } from '@angular/forms';
 })
 export class RegistrationComponent implements OnInit {
 
+  message: string;
+
   constructor(public service: UserService, private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -20,8 +22,9 @@ export class RegistrationComponent implements OnInit {
     console.log('hello')
     console.log(val);
     console.log(val.value)
-    this.service.getUserByEmail(val.value).subscribe(data=>{
-      if(data !=null || data!=''){
+    this.service.getUserByEmail(val.value).subscribe((res: any) =>{
+      console.log(res.message )
+      if(res.message != 'Not Found'){
         val.setErrors({ loginIdExist: true });
       }
       else{
