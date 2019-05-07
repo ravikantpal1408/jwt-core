@@ -18,23 +18,21 @@ export class RegistrationComponent implements OnInit {
     this.service.formModel.reset();
   }
 
-  check(val: FormControl){
-    console.log('hello')
-    console.log(val);
-    console.log(val.value)
-    this.service.getUserByEmail(val.value).subscribe((res: any) =>{
-      console.log(res.message )
-      if(res.message != 'Not Found'){
-        val.setErrors({ loginIdExist: true });
-      }
-      else{
-        val.setErrors(null);
-
-      }
-    })
-    // this.service.
-
-  }
+  // check(val: FormControl){
+  //   console.log('hello')
+  //   console.log(val);
+  //   console.log(val.value)
+  //   this.service.getUserByEmail(val.value).subscribe((res: any) =>{
+  //     console.log(res.message )
+  //     if(res.message != 'Not Found'){
+  //       val.setErrors({ loginIdExist: true });
+  //     }
+  //     else{
+  //       val.setErrors(null);
+  //     }
+  //   })
+  //   // this.service.
+  // }
 
   onSubmit() {
     this.service.register().subscribe(

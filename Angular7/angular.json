@@ -33,7 +33,8 @@
             ],
             "scripts": [
               "./bootstrap/vendor/jquery/jquery.min.js",
-              "./bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+
               "./bootstrap/vendor/jquery-easing/jquery.easing.min.js",
               "./bootstrap/js/sb-admin-2.min.js"
             ]

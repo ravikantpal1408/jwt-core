@@ -1,7 +1,7 @@
 <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()" #heroForm="ngForm">
   <div class="form-group required"  >
     <label>Username</label>
-    <input class="form-control" formControlName="UserName" (change)="check(service.formModel.get('UserName'))" >
+    <input class="form-control" formControlName="UserName" >
     <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">This
       field is mandatory.</label>
 

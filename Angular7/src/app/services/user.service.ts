@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class UserService {
 
 
   formModel = this.fb.group({
-    UserName: ['', Validators.required],
+    UserName: ['', [Validators.required, this.checkIdForMe.bind(this)]],
     Email: ['', Validators.email],
     FullName: [''],
     Passwords: this.fb.group({
@@ -64,5 +64,26 @@ export class UserService {
 
   getUserByEmail(username: string){
     return this.http.get(this.BaseURI + '/ApplicationUser/GetUserByEmail?loginId='+ username);
+  }
+
+  checkIdForMe(fb: FormControl){
+    // console.log(fb.value)
+    if(fb.value!=null){
+      if( fb.value != ''){
+        // console.log('helo')
+        this.http.get(this.BaseURI + '/ApplicationUser/GetUserByEmail?loginId='+ fb.value).subscribe((data: any)=>{
+          // console.log(data);
+          if(data.message != 'Not Found'){
+            fb.setErrors({ loginIdExist: true });
+          }
+          else{
+            fb.setErrors(null);
+
+          }
+        });
+      }
+
+    }
+
   }
 }
