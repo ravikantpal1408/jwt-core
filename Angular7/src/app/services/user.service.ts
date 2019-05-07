@@ -59,4 +59,10 @@ export class UserService {
   getUserProfile() {
     return this.http.get(this.BaseURI + '/UserProfile');
   }
+
+
+
+  getUserByEmail(username: string){
+    return this.http.get<any[]>(this.BaseURI + '/ApplicationUser/GetUserByEmail?loginId='+ username);
+  }
 }

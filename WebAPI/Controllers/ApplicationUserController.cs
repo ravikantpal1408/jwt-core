@@ -77,5 +77,19 @@ namespace WebAPI.Controllers
             else
                 return BadRequest(new { message = "Username or password is incorrect." });
         }
+
+
+        [HttpGet]
+        [Route("GetUserByEmail")]
+        public async Task<IActionResult> GetUserByEmail(string loginId){
+            var user = await _userManager.FindByNameAsync(loginId);
+            if(user == null){
+                return Ok(new {});
+            }
+            else{
+                return Ok(new { user.UserName});
+            }
+
+        }
     }
 }

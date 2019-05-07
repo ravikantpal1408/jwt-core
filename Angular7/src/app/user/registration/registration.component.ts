@@ -1,6 +1,7 @@
 import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -13,6 +14,23 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.service.formModel.reset();
+  }
+
+  check(val: FormControl){
+    console.log('hello')
+    console.log(val);
+    console.log(val.value)
+    this.service.getUserByEmail(val.value).subscribe(data=>{
+      if(data !=null || data!=''){
+        val.setErrors({ loginIdExist: true });
+      }
+      else{
+        val.setErrors(null);
+
+      }
+    })
+    // this.service.
+
   }
 
   onSubmit() {
