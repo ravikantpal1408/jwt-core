@@ -19,6 +19,8 @@ namespace WebAPI
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,6 +35,7 @@ namespace WebAPI
             // services.AddEntityFrameworkNpgsql()
             //    .AddDbContext<AuthenticationContext>()
             //    .BuildServiceProvider();
+            
             //Inject AppSettings
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
 
@@ -84,7 +87,17 @@ namespace WebAPI
             }
             );
 
-            services.AddCors();
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://127.0.0.1", "http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
 
             //Jwt Authentication
 
@@ -112,6 +125,8 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors(MyAllowSpecificOrigins); 
+
 
             app.Use(async (ctx, next) =>
             {
