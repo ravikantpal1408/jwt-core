@@ -1,38 +1,36 @@
-import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../../services/user.service';
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
-
+import { ToastrService } from "ngx-toastr";
+import { UserService } from "../../services/user.service";
+import { Component, OnInit } from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { Router, ActivatedRoute } from "@angular/router";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
+  selector: "app-login",
+  templateUrl: "./login.component.html",
   styles: []
 })
 export class LoginComponent implements OnInit {
-
-
   returnUrl: string;
 
-
   formModel = {
-    UserName: '',
-    Password: ''
+    UserName: "",
+    Password: ""
   };
 
-  constructor(private service: UserService,
+  constructor(
+    private service: UserService,
     private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService) { }
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
 
-    if (localStorage.getItem('token') != null) {
-      this.router.navigateByUrl('/home');
+    if (localStorage.getItem("token") != null) {
+      this.router.navigateByUrl("/home");
     }
   }
 
@@ -41,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.service.login(form.value).subscribe(
       (res: any) => {
         this.spinner.hide();
-        localStorage.setItem('token', res.token);
+        localStorage.setItem("token", res.token);
 
         // login successful so redirect to return url
 
@@ -52,7 +50,10 @@ export class LoginComponent implements OnInit {
       err => {
         this.spinner.hide();
         if (err.status == 400) {
-          this.toastr.error('Incorrect username or password.', 'Authentication failed.');
+          this.toastr.error(
+            "Incorrect username or password.",
+            "Authentication failed."
+          );
         } else {
           console.log(err);
         }
