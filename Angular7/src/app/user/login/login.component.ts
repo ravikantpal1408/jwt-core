@@ -2,7 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 
@@ -12,17 +12,25 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styles: []
 })
 export class LoginComponent implements OnInit {
+
+
+  returnUrl: string;
+
+
   formModel = {
     UserName: '',
     Password: ''
   };
 
   constructor(private service: UserService,
+    private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService,
     private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
     if (localStorage.getItem('token') != null) {
       this.router.navigateByUrl('/home');
     }
@@ -35,7 +43,11 @@ export class LoginComponent implements OnInit {
         this.spinner.hide();
         localStorage.setItem('token', res.token);
 
-        this.router.navigateByUrl('/home');
+        // login successful so redirect to return url
+
+        this.router.navigateByUrl(this.returnUrl);
+
+        // this.router.navigateByUrl('/home');
       },
       err => {
         this.spinner.hide();

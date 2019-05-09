@@ -1,6 +1,6 @@
 import { UserService } from '../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 
@@ -11,10 +11,19 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   userDetails;
+  returnUrl: string;
 
-  constructor(private service: UserService, private router: Router) { }
+
+  constructor(
+    private service: UserService,
+    private router: Router,
+    private route: ActivatedRoute,
+
+    ) { }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
     this.service.getUserProfile().subscribe(
       res => {
         this.userDetails = res;

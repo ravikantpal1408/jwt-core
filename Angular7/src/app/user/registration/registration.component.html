@@ -1,20 +1,56 @@
-<form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()" #heroForm="ngForm">
-  <div class="form-group required"  >
-    <label>Username</label>
-    <input class="form-control" formControlName="UserName" >
-    <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">This
-      field is mandatory.</label>
-
-
- <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.loginIdExist" >
- Already Exists</label>
+<form [formGroup]="this.formModel" autocomplete="off" (submit)="onSubmit()" #heroForm="ngForm">
+  <div class="form-group required">
+    <div class="row">
+      <div class="col-sm-8">
+        <label>Username</label>
+        <input class="form-control" formControlName="UserName">
+        <label class="text-danger"
+          *ngIf="this.formModel.get('UserName').touched && this.formModel.get('UserName').errors?.required">This
+          field is mandatory.</label>
+        <label class="text-danger"
+          *ngIf="this.formModel.get('UserName').touched && this.formModel.get('UserName').errors?.loginIdExist">
+          Already Exists</label>
+        <label class="text-danger"
+          *ngIf="this.formModel.get('UserName').touched && this.formModel.get('UserName').errors?.email">Invalid
+          email address.</label>
+        <label class="text-success" *ngIf="successUsernameFlag">You Can Use this Username</label>
+      </div>
+      <div class="col-sm-4">
+        <button type="button" class="btn btn-success btn-check-for-me "
+          (click)="checkUsername(this.formModel.get('UserName'))">check</button>
+      </div>
+    </div>
 
   </div>
   <div class="form-group">
-    <label>Email</label>
-    <input class="form-control" formControlName="Email">
-    <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">Invalid
-      email address.</label>
+
+    <div class="row">
+      <div class="col-sm-8">
+
+        <label>Email</label>
+        <input class="form-control" formControlName="Email">
+
+        <label class="text-danger"
+          *ngIf="this.formModel.get('Email').touched && this.formModel.get('Email').errors?.required">Required
+          email address.</label>
+        <label class="text-danger"
+          *ngIf="this.formModel.get('Email').touched && this.formModel.get('Email').errors?.email">Invalid
+          email address.</label>
+
+        <label class="text-danger"
+          *ngIf="this.formModel.get('Email').touched && this.formModel.get('Email').errors?.emailExists">
+          Already Exists</label>
+
+        <label class="text-success" *ngIf="successEmailFlag">You Can Use this Email</label>
+
+      </div>
+      <div class="col-sm-4">
+        <button type="button" class="btn btn-success btn-check-for-me"
+          (click)="checkEmail(this.formModel.get('Email'))">check</button>
+
+      </div>
+    </div>
+
   </div>
   <div class="form-group">
     <label>Full Name</label>
@@ -24,23 +60,34 @@
     <div class="form-group required">
       <label>Password</label>
       <input type="password" class="form-control" formControlName="Password">
-      <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required">This
+      <label class="text-danger"
+        *ngIf="this.formModel.get('Passwords.Password').touched && this.formModel.get('Passwords.Password').errors?.required">This
         field is mandatory.</label>
-      <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.minlength">Minimum
+      <label class="text-danger"
+        *ngIf="this.formModel.get('Passwords.Password').touched && this.formModel.get('Passwords.Password').errors?.minlength">Minimum
         4 characters required.</label>
     </div>
     <div class="form-group required">
       <label>Confirm Password</label>
       <input type="password" class="form-control" formControlName="ConfirmPassword">
-      <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required">This
+      <label class="text-danger"
+        *ngIf="this.formModel.get('Passwords.ConfirmPassword').touched && this.formModel.get('Passwords.ConfirmPassword').errors?.required">This
         field is mandatory.</label>
-      <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Confirm
+      <label class="text-danger"
+        *ngIf="this.formModel.get('Passwords.ConfirmPassword').touched && this.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Confirm
         Password does not match.</label>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-8 offset-md-2">
-      <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Sign Up</button>
+      <button type="submit" class="btn btn-lg btn-block" [disabled]="!this.formModel.valid">Sign Up</button>
     </div>
   </div>
 </form>
+<style>
+  .btn-check-for-me {
+    margin-top: 31px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+</style>
