@@ -39,17 +39,22 @@ export class LoginComponent implements OnInit {
     this.service.login(form.value).subscribe(
       (res: any) => {
         this.spinner.hide();
+        console.log(this.returnUrl);
+
         localStorage.setItem("token", res.token);
 
         // login successful so redirect to return url
-
-        this.router.navigateByUrl(this.returnUrl);
+        if (this.returnUrl === "/") {
+          this.router.navigateByUrl("/home");
+        } else {
+          this.router.navigateByUrl(this.returnUrl);
+        }
 
         // this.router.navigateByUrl('/home');
       },
       err => {
         this.spinner.hide();
-        if (err.status == 400) {
+        if (err.status === 400) {
           this.toastr.error(
             "Incorrect username or password.",
             "Authentication failed."

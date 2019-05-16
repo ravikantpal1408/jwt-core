@@ -1,1 +1,72 @@
-<!-- <div>Hello My Name is Ravi</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h1 class="header text-center">Hello</h1>
+      <hr>
+      <div class="row">
+        <form [formGroup]="this.formModel" autocomplete="off" (submit)="onSubmit()" #heroForm="ngForm" >
+
+        </form>
+
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+<!--
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h1 class="header text-center">Hello</h1>
+      <hr>
+      <form [formGroup]="model" (ngSubmit)="onSubmit()">
+        <div class="form-group" >
+          <label for="questionOne">Question 1:</label>
+          <select name="questionOne" id="ddlSelectOne" class="form-control" formControlName="qaOne">
+              <option value="0"></option>
+              <option *ngFor="let summary of list"value="{{summary}}" >{{summary}}</option>
+
+          </select>
+          <label>Answer One:</label>
+          <input type="text"  class="form-control" placeholder="Answer 1" formControlName="answerOne">
+
+          <label class="text-danger" *ngIf="this.model.get('qaOne').touched && this.model.get('qaOne').errors?.questionTaken">error!</label>
+
+
+
+        </div>
+        <div class="form-group">
+          <label for="questionTwo">Question 2:</label>
+          <select name="questionTwo" id="ddlSelectTwo" class="form-control" formControlName="qaTwo">
+              <option value="0"></option>
+            <option *ngFor="let summary of list"value="{{summary}}">{{summary}}</option>
+          </select>
+
+          <label class="text-danger" *ngIf="this.model.get('qaOne').touched && this.model.get('qaTwo').errors?.questionTaken">error!</label>
+          <label>Answer Two:</label>
+          <input type="text"  class="form-control" placeholder="Answer 2" formControlName="answerTwo">
+        </div>
+        <div class="form-group">
+          <label for="questionThree">Question 3:</label>
+          <select name="questionThree" id="ddlSelectThree" class="form-control" formControlName="qaThree">
+            <option value="0"></option>
+            <option *ngFor="let summary of list"value="{{summary}}">{{summary}}</option>
+          </select>
+          <label class="text-danger" *ngIf="this.model.get('qaOne').touched && this.model.get('qaThree').errors?.questionTaken">error!</label>
+
+          <label>Answer Three:</label>
+          <input type="text"  class="form-control" placeholder="Answer 3" formControlName="answerThree">
+        </div>
+        <button class="btn btn-success" [disabled]="this.model.invalid">Submit</button>
+      </form>
+
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+<router-outlet></router-outlet> -->
